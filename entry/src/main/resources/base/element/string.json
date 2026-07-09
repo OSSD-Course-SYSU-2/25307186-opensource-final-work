@@ -1,7 +1,16 @@
 {
   "string": [
-    { "name": "module_desc", "value": "开源学习助手模块" },
-    { "name": "EntryAbility_desc", "value": "开源学习助手主入口" },
-    { "name": "EntryAbility_label", "value": "开源学习助手" }
+    {
+      "name": "module_desc",
+      "value": "?????????"
+    },
+    {
+      "name": "EntryAbility_desc",
+      "value": "???????"
+    },
+    {
+      "name": "EntryAbility_label",
+      "value": "????"
+    }
   ]
 }

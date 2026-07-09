@@ -4,32 +4,32 @@ import { window } from '@kit.ArkUI';
 
 export default class EntryAbility extends UIAbility {
   onCreate(want: Want, launchParam: AbilityConstant.LaunchParam): void {
-    hilog.info(0x0000, 'OpenSourceStudyAssistant', 'EntryAbility onCreate');
+    hilog.info(0x0000, 'TankBattle', 'EntryAbility onCreate');
   }
 
   onDestroy(): void {
-    hilog.info(0x0000, 'OpenSourceStudyAssistant', 'EntryAbility onDestroy');
+    hilog.info(0x0000, 'TankBattle', 'EntryAbility onDestroy');
   }
 
   onWindowStageCreate(windowStage: window.WindowStage): void {
     windowStage.loadContent('pages/Index', (err) => {
       if (err.code) {
-        hilog.error(0x0000, 'OpenSourceStudyAssistant', 'Failed to load page: %{public}s', JSON.stringify(err));
+        hilog.error(0x0000, 'TankBattle', 'load page failed: %{public}s', JSON.stringify(err));
         return;
       }
-      hilog.info(0x0000, 'OpenSourceStudyAssistant', 'Page loaded');
+      hilog.info(0x0000, 'TankBattle', 'load page success');
     });
   }
 
   onWindowStageDestroy(): void {
-    hilog.info(0x0000, 'OpenSourceStudyAssistant', 'WindowStage destroyed');
+    hilog.info(0x0000, 'TankBattle', 'WindowStage destroyed');
   }
 
   onForeground(): void {
-    hilog.info(0x0000, 'OpenSourceStudyAssistant', 'Ability onForeground');
+    hilog.info(0x0000, 'TankBattle', 'Ability onForeground');
   }
 
   onBackground(): void {
-    hilog.info(0x0000, 'OpenSourceStudyAssistant', 'Ability onBackground');
+    hilog.info(0x0000, 'TankBattle', 'Ability onBackground');
   }
 }
