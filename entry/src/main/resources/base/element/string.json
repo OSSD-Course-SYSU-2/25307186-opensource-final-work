@@ -2,15 +2,15 @@
   "string": [
     {
       "name": "module_desc",
-      "value": "?????????"
+      "value": "Simple tank battle game"
     },
     {
       "name": "EntryAbility_desc",
-      "value": "???????"
+      "value": "Tank battle main ability"
     },
     {
       "name": "EntryAbility_label",
-      "value": "????"
+      "value": "Tank Battle"
     }
   ]
 }

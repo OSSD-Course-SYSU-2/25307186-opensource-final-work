@@ -14,7 +14,7 @@ struct Index {
   @State dirY: number = -1;
   @State score: number = 0;
   @State life: number = 3;
-  @State message: string = '????????????????';
+  @State message: string = 'Use buttons to move. Fire to hit the enemy tank.';
   @State gameOver: boolean = false;
 
   private size: number = 9;
@@ -50,7 +50,7 @@ struct Index {
     const nextY = this.playerY + dy;
 
     if (!this.isInside(nextX, nextY) || this.isWall(nextX, nextY)) {
-      this.message = '??????????';
+      this.message = 'Blocked by wall or edge.';
       return;
     }
 
@@ -72,7 +72,7 @@ struct Index {
     let y = this.playerY + this.dirY;
     while (this.isInside(x, y)) {
       if (this.isWall(x, y)) {
-        this.message = '???????';
+        this.message = 'Shell hit a wall.';
         this.enemyMove();
         return;
       }
@@ -80,9 +80,9 @@ struct Index {
         this.score++;
         if (this.score >= 5) {
           this.gameOver = true;
-          this.message = '??????? 5 ?';
+          this.message = 'You win! Score reached 5.';
         } else {
-          this.message = '??????????';
+          this.message = 'Hit! Enemy moved.';
           this.resetEnemy();
         }
         return;
@@ -91,7 +91,7 @@ struct Index {
       y += this.dirY;
     }
 
-    this.message = '????';
+    this.message = 'Missed.';
     this.enemyMove();
   }
 
@@ -115,7 +115,7 @@ struct Index {
       this.enemyY = nextY;
     }
 
-    if (Math.abs(this.enemyX - this.playerX) + Math.abs(this.enemyY - this.playerY) <= 1) {
+    if (Math.abs(this.playerX - this.enemyX) + Math.abs(this.playerY - this.enemyY) <= 1) {
       this.hurtPlayer();
     }
   }
@@ -124,9 +124,9 @@ struct Index {
     this.life--;
     if (this.life <= 0) {
       this.gameOver = true;
-      this.message = '???????????';
+      this.message = 'Game over.';
     } else {
-      this.message = '????????? -1';
+      this.message = 'You were hit. Life -1.';
       this.playerX = 4;
       this.playerY = 8;
       this.enemyX = 4;
@@ -152,18 +152,18 @@ struct Index {
     this.score = 0;
     this.life = 3;
     this.gameOver = false;
-    this.message = '?????';
+    this.message = 'Restarted.';
   }
 
   private cellText(x: number, y: number): string {
     if (x === this.playerX && y === this.playerY) {
-      return '?';
+      return 'P';
     }
     if (x === this.enemyX && y === this.enemyY) {
-      return '?';
+      return 'E';
     }
     if (this.isWall(x, y)) {
-      return '?';
+      return '#';
     }
     return '';
   }
@@ -183,34 +183,34 @@ struct Index {
 
   private faceText(): string {
     if (this.dirX === 0 && this.dirY === -1) {
-      return '?';
+      return 'UP';
     }
     if (this.dirX === 0 && this.dirY === 1) {
-      return '?';
+      return 'DOWN';
     }
     if (this.dirX === -1 && this.dirY === 0) {
-      return '?';
+      return 'LEFT';
     }
-    return '?';
+    return 'RIGHT';
   }
 
   build() {
     Column() {
-      Text('????')
+      Text('Tank Battle')
         .fontSize(30)
         .fontWeight(FontWeight.Bold)
         .fontColor('#222222')
         .margin({ top: 35, bottom: 8 })
 
-      Text('??? ArkTS ???????')
+      Text('A simple ArkTS mini game')
         .fontSize(14)
         .fontColor('#666666')
         .margin({ bottom: 16 })
 
       Row() {
-        this.InfoBox('??', this.score.toString())
-        this.InfoBox('??', this.life.toString())
-        this.InfoBox('??', this.faceText())
+        this.InfoBox('Score', this.score.toString())
+        this.InfoBox('Life', this.life.toString())
+        this.InfoBox('Face', this.faceText())
       }
       .justifyContent(FlexAlign.SpaceAround)
       .width('92%')
@@ -228,7 +228,7 @@ struct Index {
 
       this.ControlButtons()
 
-      Button('????')
+      Button('RESTART')
         .width(150)
         .height(42)
         .fontSize(16)
@@ -295,7 +295,7 @@ struct Index {
   @Builder
   ControlButtons() {
     Column() {
-      Button('?')
+      Button('UP')
         .width(70)
         .height(42)
         .backgroundColor('#1F4E79')
@@ -304,14 +304,14 @@ struct Index {
         })
 
       Row() {
-        Button('?')
+        Button('LEFT')
           .width(70)
           .height(42)
           .backgroundColor('#1F4E79')
           .onClick(() => {
             this.movePlayer(-1, 0);
           })
-        Button('??')
+        Button('FIRE')
           .width(90)
           .height(42)
           .backgroundColor('#D35400')
@@ -319,7 +319,7 @@ struct Index {
           .onClick(() => {
             this.fire();
           })
-        Button('?')
+        Button('RIGHT')
           .width(70)
           .height(42)
           .backgroundColor('#1F4E79')
@@ -329,7 +329,7 @@ struct Index {
       }
       .margin({ top: 8, bottom: 8 })
 
-      Button('?')
+      Button('DOWN')
         .width(70)
         .height(42)
         .backgroundColor('#1F4E79')
