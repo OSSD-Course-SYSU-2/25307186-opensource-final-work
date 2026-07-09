@@ -1,0 +1,21 @@
+# DevEco Studio / HarmonyOS
+**/node_modules/
+**/oh_modules/
+**/.hvigor/
+**/build/
+**/coverage/
+**/.preview/
+**/.cxx/
+**/.idea/
+*.iml
+local.properties
+
+# Logs
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# System files
+.DS_Store
+Thumbs.db

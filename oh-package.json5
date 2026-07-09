@@ -1,0 +1,15 @@
+{
+  "modelVersion": "5.0.0",
+  "name": "opensource-study-assistant",
+  "version": "1.0.0",
+  "description": "HarmonyOS ArkTS final work for Open Source Software Development course.",
+  "author": "25307186",
+  "license": "MIT",
+  "ohos": {
+    "org": "sysu",
+    "directoryLevel": "project",
+    "buildTool": "hvigor"
+  },
+  "dependencies": {},
+  "devDependencies": {}
+}
